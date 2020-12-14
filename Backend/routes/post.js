@@ -24,4 +24,11 @@ router.post("/add", (req, res) => {
         .catch(err => res.status(400).json(`error: ${err}`));
 });
 
+// REQUEST FIND POST BY ID
+router.get("/:id", (req, res) => {
+    posts.findById(req.params.id)
+        .then(post => res.json(post))
+        .catch(err => res.status(400).json(`error:${err}`));
+});
+
 module.exports = router;
