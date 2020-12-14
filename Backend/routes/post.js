@@ -31,4 +31,20 @@ router.get("/:id", (req, res) => {
         .catch(err => res.status(400).json(`error:${err}`));
 });
 
+// REQUESt FIND POST BY ID AND UPDATE
+router.put("/update/:id", (req, res) => {
+    posts.findById(req.params.id)
+        .then(post => {
+            post.title = req.body.title,
+                post.post = req.body.post,
+                post.authorname = req.body.authorname
+
+            post
+                .save()
+                .then(() => res.json("The post is UPDATED successfully !"))
+                .catch(err => res.status(400).json(`error:${err}`));
+        })
+        .catch(err => res.status(400).json(`error:${err}`));
+});
+
 module.exports = router;
