@@ -19,6 +19,8 @@ mongoose.connect(uri, {
     useUnifiedTopology: true
 });
 
+const postRouter = require("./routes/post");
+app.use("/posts", postRouter);
 
 const connection = mongoose.connection;
 connection.once("open", () =>
