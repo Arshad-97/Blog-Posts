@@ -47,4 +47,12 @@ router.put("/update/:id", (req, res) => {
         .catch(err => res.status(400).json(`error:${err}`));
 });
 
+//REQUEST FIND POST BY ID AND DELETE
+router.delete("/:id", (req, res) => {
+    posts.findByIdAndDelete(req.params.id)
+        .then(() => res.json("Successfully Deleted the post as this id !"))
+        .catch(err => res.status(400).json(`error:${err}`));
+});
+
+
 module.exports = router;
